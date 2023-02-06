@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=2]
 
@@ -10,6 +10,14 @@ load_path = "res://.import/Player.png-3b381e068d1d74cc2895fb9be41402b0.stex"
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 76.5, 32 )
+
+[sub_resource type="StreamTexture" id=4]
+flags = 4
+load_path = "res://.import/Ground.png-a1e7165254050f6723978f7d8348ce00.stex"
+
+[sub_resource type="StreamTexture" id=5]
+flags = 4
+load_path = "res://.import/Ground.png-a1e7165254050f6723978f7d8348ce00.stex"
 
 [node name="Node2D" type="Node2D"]
 
@@ -35,10 +43,10 @@ scale = Vector2( 2, 1 )
 position = Vector2( 1, 1 )
 shape = SubResource( 1 )
 
-[node name="Icon2" type="Sprite" parent="StaticBody2D/CollisionShape2D"]
-position = Vector2( 0.750002, 0.500001 )
-scale = Vector2( 4.73438, 2.03125 )
-texture = SubResource( 2 )
+[node name="Sprite" type="Sprite" parent="StaticBody2D/CollisionShape2D"]
+position = Vector2( 1.90735e-06, 3.8147e-06 )
+scale = Vector2( 4.78125, 2 )
+texture = SubResource( 4 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 position = Vector2( 400, 400 )
@@ -52,3 +60,6 @@ shape = SubResource( 1 )
 position = Vector2( -0.333328, 0.999994 )
 scale = Vector2( 4.79167, 2 )
 texture = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = SubResource( 5 )
