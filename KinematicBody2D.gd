@@ -1,12 +1,14 @@
 extends KinematicBody2D
 
-var gravity = 1.0
-var speed = 2000
+var speed = 5000
+
+var gravity = 800
+var time_passed = 0
 var velocity = Vector2()
 
 func _physics_process(delta):
 	velocity = Vector2()
-	velocity.y += gravity
+
 	if Input.is_action_pressed("ui_right"):
 		velocity.x += 1
 	if Input.is_action_pressed("ui_left"):
@@ -17,5 +19,8 @@ func _physics_process(delta):
 		velocity.y -= 1
 
 	velocity = velocity.normalized() * speed * delta
+
+	time_passed += delta
+	velocity.y += gravity * time_passed * delta
 
 	move_and_slide(velocity)
