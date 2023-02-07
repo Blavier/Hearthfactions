@@ -18,23 +18,12 @@ func _physics_process(delta):
 		velocity.x += movementspeed
 	if Input.is_action_pressed("ui_left"):
 		velocity.x -= movementspeed
-	#if Input.is_action_pressed("ui_down"):
-	#	velocity.y += movementspeed
 	
 	if is_on_floor():
+		coyotetime = 8;
 		velocity.x *= groundfriction;
 	else:
 		velocity.x *= airfriction;
-	#velocity.y *= friction;
-	
-	#velocity.x += speed * delta
-	#velocity.y += speed * delta
-	
-
-	#time_passed += delta
-	
-		
-	
 		
 	velocity.y += gravity
 	
@@ -43,17 +32,18 @@ func _physics_process(delta):
 	
 	if is_on_floor():
 		velocity.y = 0;
-		
 	if is_on_wall():
 		velocity.x = 0;
 		
 	if Input.is_action_just_pressed("ui_up"):
-		jumptimer = 6;
+		jumptimer = 7;
+	
+	if (coyotetime > 0):
+		coyotetime -= 1;
 	
 	if jumptimer > 0:
 		jumptimer -= 1;
-		if is_on_floor():
-			velocity.y = -jumpvelocity
-		
+		if (coyotetime > 0):
+			velocity.y = -jumpvelocity;
 
 	move_and_slide(velocity, Vector2.UP)
